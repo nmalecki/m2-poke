@@ -12,3 +12,4 @@ if ($pokemonImageUrl): ?>
         <img src="<?= $pokemonImageUrl ?>" alt="<?= $pokemonName ?>" />
     </div>
 <?php endif; ?>
+<?= $block->getChildBlock('pokemon.error')->setProduct($product)->toHtml(); ?>

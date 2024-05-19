@@ -78,6 +78,7 @@ $pokemonDetailsViewModel = $block->getData('pokemon_details_view_model');
                                     <?=/* @noEscape */ $_helper->productAttribute($_product, $pokemonDetailsViewModel->getProductName($_product), 'name')?>
                                 </a>
                             </strong>
+                            <?= $block->getChildBlock('pokemon.error')->setProduct($_product)->toHtml(); ?>
                             <?= $block->getReviewsSummaryHtml($_product, $templateType) ?>
                             <?= /* @noEscape */ $block->getProductPrice($_product) ?>
 

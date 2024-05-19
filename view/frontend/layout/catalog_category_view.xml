@@ -8,6 +8,7 @@
             <arguments>
                 <argument name="pokemon_details_view_model" xsi:type="object">Poke\Pokemon\ViewModel\Product\PokemonDetailsViewModel</argument>
             </arguments>
+            <block name="product.info.pokemon.error" as="pokemon.error" template="Poke_Pokemon::product/pokemon_error.phtml"/>
         </referenceBlock>
     </body>
 </page>

@@ -1,6 +1,6 @@
 {
   "name": "poke/module-pokemon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "The Magento2 module implements a feature to display Pokemon details basing on the pokemon_name attribute",
   "type": "magento2-module",
   "require": {

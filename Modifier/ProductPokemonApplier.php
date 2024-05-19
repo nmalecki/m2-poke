@@ -6,7 +6,6 @@ namespace Poke\Pokemon\Modifier;
 
 use Magento\Catalog\Api\Data\ProductInterface;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
-use Magento\Framework\Message\ManagerInterface;
 use Poke\Pokemon\Api\GetPokemonDetailsInterface;
 use Poke\Pokemon\Config\PokemonDetailsConfigProvider;
 use Poke\Pokemon\Exception\PokemonApiResponseException;
@@ -21,13 +20,11 @@ class ProductPokemonApplier
      * @param \Poke\Pokemon\Api\GetPokemonDetailsInterface $getPokemonDetails
      * @param \Poke\Pokemon\Config\PokemonDetailsConfigProvider $pokemonDetailsConfig
      * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Message\ManagerInterface $messageManager
      */
     public function __construct(
         private readonly GetPokemonDetailsInterface $getPokemonDetails,
         private readonly PokemonDetailsConfigProvider $pokemonDetailsConfig,
-        private readonly LoggerInterface $logger,
-        private readonly ManagerInterface $messageManager
+        private readonly LoggerInterface $logger
     ) {
     }
 
@@ -37,8 +34,6 @@ class ProductPokemonApplier
      * @param \Magento\Catalog\Api\Data\ProductInterface $product
      *
      * @return void
-     * @throws \Poke\Pokemon\Exception\PokemonApiResponseException
-     * @throws \Poke\Pokemon\Exception\PokemonNotFoundException
      */
     public function applyPokemonForProduct(ProductInterface $product): void
     {
@@ -52,9 +47,16 @@ class ProductPokemonApplier
             return;
         }
 
-        $pokemon = $this->getPokemonDetails->getPokemonByName($pokemonName);
-
-        $product->getExtensionAttributes()->setPokemon($pokemon);
+        try {
+            $pokemon = $this->getPokemonDetails->getPokemonByName($pokemonName);
+            $product->getExtensionAttributes()->setPokemon($pokemon);
+        } catch (PokemonApiResponseException|PokemonNotFoundException $pokemonException) {
+            $this->logger->error(
+                sprintf('Couldn\'t fetch pokemon details for product with SKU %s', $product->getSku()),
+                ['error' => $pokemonException->getMessage()]
+            );
+            $product->getExtensionAttributes()->setPokemonError($pokemonException->getMessage());
+        }
     }
 
     /**
@@ -70,23 +72,8 @@ class ProductPokemonApplier
             return;
         }
 
-        $error = false;
         foreach ($productCollection as $product) {
-            try {
-                $this->applyPokemonForProduct($product);
-            } catch (PokemonApiResponseException|PokemonNotFoundException $pokemonException) {
-                $this->logger->error(
-                    sprintf('Couldn\'t fetch pokemon details for product with SKU %s', $product->getSku()),
-                    ['error' => $pokemonException->getMessage()]
-                );
-                $error = true;
-            }
-        }
-
-        if ($error) {
-            $this->messageManager->addErrorMessage(
-                __('Couldn\'t fetch pokemon details for some products. Please contact with Customer Service.')
-            );
+            $this->applyPokemonForProduct($product);
         }
     }
 }

@@ -16,9 +16,4 @@
             <argument name="logger" xsi:type="object">Poke\Pokemon\Model\Logger\PokemonErrorLogger</argument>
         </arguments>
     </type>
-    <type name="Poke\Pokemon\Plugin\Catalog\Helper\Product\View\AppendPokemonDetails">
-        <arguments>
-            <argument name="logger" xsi:type="object">Poke\Pokemon\Model\Logger\PokemonErrorLogger</argument>
-        </arguments>
-    </type>
 </config>

@@ -3,5 +3,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
     <extension_attributes for="Magento\Catalog\Api\Data\ProductInterface">
         <attribute code="pokemon" type="Poke\Pokemon\Api\Data\PokemonDetailsInterface"/>
+        <attribute code="pokemon_error" type="string"/>
     </extension_attributes>
 </config>

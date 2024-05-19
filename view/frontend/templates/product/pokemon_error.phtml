@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+
+/** @var \Magento\Catalog\Api\Data\ProductInterface $product */
+$product = $block->getProduct();
+$errorMessage = $product?->getExtensionAttributes()?->getPokemonError();
+
+if ($errorMessage): ?>
+    <div role="alert" class="messages">
+        <div class="message-warning warning message">
+            <div><?php echo $block->escapeHtml(__($errorMessage)) ?></div>
+        </div>
+    </div>
+<?php endif; ?>
