@@ -1,8 +1,8 @@
 # Poke API Pokemon module for Magento 2
 
 ## Summary
-This module is a simple integration of the [PokeAPI](https://pokeapi.co/) into Magento 2. It allows you to search for a Pokemon by name and view its details on the PLP/PDP.\
-The pokemon details are displayed basing on the pokemon's name which you can set on the product's attribute - `Pokemon Name`.
+This module is a simple integration of the [PokeAPI](https://pokeapi.co/) into Magento 2. It allows you to search for a Pokémon by name and view its details on the PLP/PDP.\
+The pokemon details are displayed basing on the Pokémon's name which you can set on the product's attribute - `Pokemon Name`.
 
 ## Installation
 ```
@@ -23,5 +23,5 @@ Here you can also set life time of the cache.
 The module is enabled by default - once a pokemon's name is set on a product it will be displayed in the storefront.
 
 ### Error Handling
-If there is any issue during fetching pokemon's data the information is displayed in the storefront.
+If there is any issue while fetching Pokémon data, the information will be displayed in the storefront.
 You can also find more details in the log file - `var/log/pokemon_error.log`
