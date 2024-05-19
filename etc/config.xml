@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config>
+    <default>
+        <poke_api>
+            <general>
+                <api_url>https://pokeapi.co/api/v2/</api_url>
+            </general>
+        </poke_api>
+        <pokemon_details>
+            <details>
+                <enabled>1</enabled>
+                <cache_lifetime>3600</cache_lifetime>
+            </details>
+        </pokemon_details>
+    </default>
+</config>

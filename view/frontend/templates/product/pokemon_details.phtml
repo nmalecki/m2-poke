@@ -1,0 +1,14 @@
+<?php
+/** @var \Magento\Review\Block\Product\View $block */
+
+/** @var \Poke\Pokemon\ViewModel\Product\PokemonDetailsViewModel $pokemonDetailsViewModel */
+$pokemonDetailsViewModel = $block->getData('pokemon_details_view_model');
+$product = $block->getProduct();
+$pokemonName = $pokemonDetailsViewModel->getProductName($product);
+$pokemonImageUrl = $pokemonDetailsViewModel->getPokemonImageUrl($product);
+
+if ($pokemonImageUrl): ?>
+    <div class="pokemon-details">
+        <img src="<?= $pokemonImageUrl ?>" alt="<?= $pokemonName ?>" />
+    </div>
+<?php endif; ?>

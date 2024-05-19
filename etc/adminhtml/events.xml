@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_poke_api">
+        <observer name="poke_pokemon_flush_poke_api_cache_observer"
+                  instance="Poke\Pokemon\Observer\FlushPokeApiCacheObserver"/>
+    </event>
+</config>

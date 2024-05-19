@@ -1,0 +1,23 @@
+{
+  "name": "poke/module-pokemon",
+  "version": "1.0.0",
+  "description": "The Magento2 module implements a feature to display Pokemon details basing on the pokemon_name attribute",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "guzzlehttp/guzzle": "^7.8",
+    "magento/module-catalog": "104.0.*",
+    "psr/log": "^2.0.0"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Poke\\Pokemon\\": ""
+    }
+  }
+}
