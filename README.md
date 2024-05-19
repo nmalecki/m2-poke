@@ -1,0 +1,23 @@
+# Poke API Pokemon module for Magento 2
+
+## Summary
+This module is a simple integration of the [PokeAPI](https://pokeapi.co/) into Magento 2. It allows you to search for a Pokemon by name and view its details on the PLP/PDP.
+The pokemon details are displayed basing on the pokemon's name which you can set on the product's attribute - `Pokemon Name`.
+
+## Installation
+```
+composer config repositories.poke-pokemon git https://github.com/nmalecki/m2-poke.git
+composer require poke/module-pokemon
+php bin/magento module:enable Poke_Pokemon
+php bin/magento setup:upgrade
+```
+## Usage
+### Configuration
+Go to `Stores > Configuration > Poke API`.\
+In the `Poke API Configuration` section, you can set the base URL of the PokeAPI. By default, it is set to `https://pokeapi.co/api/v2/`. \
+![Poke API](https://raw.githubusercontent.com/nmalecki/m2-poke/main/docs/poke_api_config.png)
+To manage Pokemon Details, go to `Pokemon Details` section. You can enable/disable displaying Pokemon details on the product page and product listing page.\
+Here you can also set life time of the cache.
+![Pokemon Details](https://raw.githubusercontent.com/nmalecki/m2-poke/main/docs/poke_api_config.png)
+
+The module is enabled by default.
